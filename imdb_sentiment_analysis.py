@@ -42,12 +42,12 @@ testing_sequences = tokenizer.texts_to_sequences(testing_sentences)
 testing_padded = pad_sequences(testing_sequences, maxlen = max_length, truncating = trunc_type)
 
 def model_2(vocab_size, embedding_dim, max_length):
-    model2 = Sequential()
-    model2.add(Embedding(vocab_size, embedding_dim,input_length = max_length))
-    model2.add(SpatialDropout1D(0.4))
-    model2.add(LSTM(64, dropout=0.2, recurrent_dropout=0.2))
-    model2.add(Dense(2,activation='softmax'))
-    return model2
+    model = Sequential()
+    model.add(Embedding(vocab_size, embedding_dim,input_length = max_length))
+    model.add(SpatialDropout1D(0.4))
+    model.add(LSTM(64, dropout=0.2, recurrent_dropout=0.2))
+    model.add(Dense(2,activation='softmax'))
+    return model
 
 model = tensorflow.keras.models.Sequential([
     tensorflow.keras.layers.Embedding(vocab_size, embedding_dim, input_length = max_length),
